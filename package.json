@@ -1,0 +1,14 @@
+{
+  "name": "routescript",
+  "version": "1.0.0",
+  "description": "Create a route file for Angular using a JSON config file",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.6.0"
+  }
+}
