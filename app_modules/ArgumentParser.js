@@ -1,6 +1,9 @@
 module.exports = { parse };
 
-
+// Take the Command Line arguments as an array and transform them into an object
+// { configFilePath: 'path', optionName: 'option' }
+// If no arguments - return error
+// If path to config file not given - return error
 function parseArgs(inputArgsArr)
 {
     if(inputArgsArr.length === 0) return ErrorEnum.NoInput;
@@ -29,11 +32,15 @@ function parseArgs(inputArgsArr)
     return inputOptions;
 }
 
+// List of Errors - in the form of an Enum
 const ErrorEnum = Object.freeze({
     'NoInput': -1,
     'NoConfigFilePath': -2
 });
 
+// Driver function - exported
+// Returns the object
+// Returns error message if there is error
 function parse(inputArgs)
 {
     this.inputArgs = inputArgs;
