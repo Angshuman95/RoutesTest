@@ -16,6 +16,13 @@ if(typeof(routesConfigObj) === 'string')
     printErrorAndAbort(routesConfigObj);
 }
 
+let filteredConfigObject = require('./app_modules/RouteFilter').filter(routesConfigObj, inputOption.optionName);
+
+if(typeof(filteredConfigObject) === 'string')
+{
+    printErrorAndAbort(filteredConfigObject);
+}
+
 function printErrorAndAbort(errMessage)
 {
     console.log(errMessage + '\n\nAborting application.');
