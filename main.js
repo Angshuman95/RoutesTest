@@ -23,6 +23,13 @@ if(typeof(filteredConfigObject) === 'string')
     printErrorAndAbort(filteredConfigObject);
 }
 
+let fileContentObj = require('./app_modules/RoutesFileContentCreator').fileContentCreator(filteredConfigObject);
+
+if(typeof(fileContentObj) === 'string')
+{
+    printErrorAndAbort(fileContentObj);
+}
+
 function printErrorAndAbort(errMessage)
 {
     console.log(errMessage + '\n\nAborting application.');
