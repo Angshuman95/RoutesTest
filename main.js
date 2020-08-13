@@ -42,7 +42,7 @@ require('fs').writeFile(`${fileContentObj.fileName}`, `${fileContentObj.content}
 let t1 = performance.now();
 
 console.log(`${fileContentObj.fileName} successfully written.`);
-console.log(`All Processes finished in ${(t1 - t0).toFixed(3)}ms.`)
+console.log(`All Processes finished in ${(t1 - t0).toFixed(3)}ms.`);
 
 function printErrorAndAbort(errMessage)
 {
