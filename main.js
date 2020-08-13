@@ -1,5 +1,8 @@
 // Collect the command-line arguments
+const process = require('process');
+const performance = require('perf_hooks').performance;
 
+let t0 = performance.now();
 let inputArgs = process.argv.slice(2);
 
 let inputOption = require('./app_modules/ArgumentParser').parse(inputArgs);
@@ -29,6 +32,17 @@ if(typeof(fileContentObj) === 'string')
 {
     printErrorAndAbort(fileContentObj);
 }
+
+require('fs').writeFile(`${fileContentObj.fileName}`, `${fileContentObj.content}`, 'utf-8', (err) => {
+    if(err){
+        return console.log(`Error: ${err}`);
+        process.exit();
+    }
+});
+let t1 = performance.now();
+
+console.log(`${fileContentObj.fileName} successfully written.`);
+console.log(`All Processes finished in ${(t1 - t0).toFixed(3)}ms.`)
 
 function printErrorAndAbort(errMessage)
 {

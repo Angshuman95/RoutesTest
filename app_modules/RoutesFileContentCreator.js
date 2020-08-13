@@ -1,6 +1,6 @@
 // Obtain the route config object
 // Create an object of the type
-// { filename: '', path: '', content: '' }
+// { fileName: 'path/filename', content: '' }
 module.exports = { fileContentCreator };
 
 function RoutesFileContentCreator(routeConfigObj, fileObj)
@@ -18,8 +18,14 @@ function RoutesFileContentCreator(routeConfigObj, fileObj)
     else
         return ErrorEnum.NoProperLineEnd;
     
-    fileObj.filename = routeConfigObj['file-name'];
-    fileObj.path = routeConfigObj.directory;
+    if(/[\\/]$/.test(routeConfigObj.directory))
+        fileObj.fileName = `${routeConfigObj.directory}${routeConfigObj['file-name']}`
+    else{
+        if(lineEnd === '\n')
+            fileObj.fileName = `${routeConfigObj.directory}/${routeConfigObj['file-name']}`
+        else
+            fileObj.fileName = `${routeConfigObj.directory}\\${routeConfigObj['file-name']}`
+    }
 
     let fileContent = `import { Routes } from '@angular/router';${lineEnd}`
 
