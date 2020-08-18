@@ -35,7 +35,7 @@ if(typeof(fileContentObj) === 'string')
 
 require('fs').writeFile(`${fileContentObj.fileName}`, `${fileContentObj.content}`, 'utf-8', (err) => {
     if(err){
-        return console.log(`Error: ${err}`);
+        return console.log(`Error while saving the file:\n${err}`);
         process.exit();
     }
 });

@@ -10,6 +10,10 @@ function RoutesFileContentCreator(routeConfigObj, fileObj)
 
     if(routeConfigObj.routes.length == 0)
         return ErrorEnum.NoRoutePresent;
+
+    //Testing for default line ending
+    if(!Object.keys(routeConfigObj).includes('line-ending'))
+        routeConfigObj['line-ending'] = 'Windows';
     
     if(/^(Unix)/i.test(routeConfigObj['line-ending']) || /^(Linux)/i.test(routeConfigObj['line-ending']))
         lineEnd = `\n`;
@@ -17,6 +21,15 @@ function RoutesFileContentCreator(routeConfigObj, fileObj)
         lineEnd = `\r\n`;
     else
         return ErrorEnum.NoProperLineEnd;
+
+    //Testing for default directory
+    if(!Object.keys(routeConfigObj).includes('directory'))
+    {
+        if(lineEnd === '\n')
+            routeConfigObj.directory = './src/app';
+        else
+            routeConfigObj.directory = '.\\src\\app';
+    }
     
     if(/[\\/]$/.test(routeConfigObj.directory))
         fileObj.fileName = `${routeConfigObj.directory}${routeConfigObj['file-name']}`

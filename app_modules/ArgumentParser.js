@@ -47,7 +47,7 @@ function parse(inputArgs)
     this.inputOptions = parseArgs(this.inputArgs);
 
     if(this.inputOptions == ErrorEnum.NoInput)
-        return 'Error: Expected input in the form:\nnode main.js -p path [-o option]';
+        return 'Error: Expected input in the form:\nnode (filename).js -p path [-o option]';
     else if(this.inputOptions == ErrorEnum.NoConfigFilePath)
         return 'Error: It is mandatory to provide the path of config file.';
     else
