@@ -33,15 +33,17 @@ if(typeof(fileContentObj) === 'string')
     printErrorAndAbort(fileContentObj);
 }
 
-require('fs').writeFile(`${fileContentObj.fileName}`, `${fileContentObj.content}`, 'utf-8', (err) => {
-    if(err){
-        return console.log(`Error while saving the file:\n${err}`);
-        process.exit();
-    }
-});
+try{
+    require('fs').writeFileSync(`${fileContentObj.fileName}`, `${fileContentObj.content}`, 'utf-8');
+    console.log(`${fileContentObj.fileName} successfully written.`);
+}
+catch(err)
+{
+    printErrorAndAbort(err);
+}
+
 let t1 = performance.now();
 
-console.log(`${fileContentObj.fileName} successfully written.`);
 console.log(`All Processes finished in ${(t1 - t0).toFixed(3)}ms.`);
 
 function printErrorAndAbort(errMessage)
