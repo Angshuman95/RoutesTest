@@ -1,7 +1,7 @@
 module.exports = { parse };
 
 // Take the Command Line arguments as an array and transform them into an object
-// { configFilePath: 'path', optionName: 'option' }
+// { configFilePath: 'path' }
 // If no arguments - return error
 // If path to config file not given - return error
 function parseArgs(inputArgsArr)
@@ -17,18 +17,12 @@ function parseArgs(inputArgsArr)
             inputOptions.configFilePath = inputArgsArr[i];
             continue;
         }
-
-        if(inputArgsArr[i] === '-o')
-            inputOptions.optionName = inputArgsArr[++i];
     }
 
 
     if(!Object.keys(inputOptions).includes('configFilePath'))
         return ErrorEnum.NoConfigFilePath;
 
-    if(!Object.keys(inputOptions).includes('optionName'))
-        inputOptions.optionName = undefined;
-    
     return inputOptions;
 }
 
@@ -47,7 +41,7 @@ function parse(inputArgs)
     this.inputOptions = parseArgs(this.inputArgs);
 
     if(this.inputOptions == ErrorEnum.NoInput)
-        return 'Error: Expected input in the form:\nnode (filename).js -p path [-o option]';
+        return 'Error: Expected input in the form:\nnode (filename).js -p path';
     else if(this.inputOptions == ErrorEnum.NoConfigFilePath)
         return 'Error: It is mandatory to provide the path of config file.';
     else

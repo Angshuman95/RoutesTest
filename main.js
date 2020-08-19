@@ -19,14 +19,7 @@ if(typeof(routesConfigObj) === 'string')
     printErrorAndAbort(routesConfigObj);
 }
 
-let filteredConfigObject = require('./app_modules/RouteFilter').filter(routesConfigObj, inputOption.optionName);
-
-if(typeof(filteredConfigObject) === 'string')
-{
-    printErrorAndAbort(filteredConfigObject);
-}
-
-let fileContentObj = require('./app_modules/RoutesFileContentCreator').fileContentCreator(filteredConfigObject);
+let fileContentObj = require('./app_modules/RoutesFileContentCreator').fileContentCreator(routesConfigObj);
 
 if(typeof(fileContentObj) === 'string')
 {

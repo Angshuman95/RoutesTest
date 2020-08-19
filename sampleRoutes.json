@@ -2,9 +2,8 @@
     "file-name": "app-route.ts",
     "directory": "./",
     "line-ending": "Linux",
-    "option": "option1",
-    "routes": {
-        "option1": [
+    "routes": 
+        [
             {
                 "pathName": "contact",
                 "path": "./contact/contact.module",
@@ -14,24 +13,6 @@
                 "pathName": "home",
                 "path": "./home/home.module",
                 "moduleName": "HomeModule"
-            }
-        ],
-        "option2": [
-            {
-                "pathName": "contact",
-                "path": "./contact/contact.module",
-                "moduleName": "ContactModule"
-            },
-            {
-                "pathName": "home",
-                "path": "./home/home.module",
-                "moduleName": "HomeModule"
-            },
-            {
-                "pathName": "about",
-                "path": "./about/about.module",
-                "moduleName": "AboutModule"
             }
         ]
-    }
 }
